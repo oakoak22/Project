@@ -2,6 +2,7 @@ import argparse
 from datetime import datetime
 import socket
 import ipinfo
+import socks
 import os
 
 # Token API dari IPinfo
@@ -58,7 +59,7 @@ def main(url, threads, time, methods):
     print(f"        \x1b[38;2;233;233;233mISP     : [ \x1b[38;2;0;255;255m{isp_info} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTHREADS : [ \x1b[38;2;0;255;255m{threads} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{time} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mHTTP-FLOOD \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mSPOOF \x1b[38;2;233;233;233m]")
     print(f"   Attack Details :")
     print(f"        \x1b[38;2;233;233;233mSTATUS : [ \x1b[38;2;0;212;14mAttack With 1 Conc \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mHOUR   : [ \x1b[38;2;0;255;255m{current_time} \x1b[38;2;233;233;233m]")
