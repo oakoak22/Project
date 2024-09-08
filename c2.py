@@ -327,7 +327,7 @@ def main():
                 print('Usage: std <ip> <port>')
                 print('Example: std 1.1.1.1 80')
 
-        elif "attack" in cnc:
+        elif "joker" in cnc:
             try:
                 ip = cnc.split()[1]
                 port = cnc.split()[2]
