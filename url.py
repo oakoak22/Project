@@ -74,4 +74,4 @@ if __name__ == "__main__":
 
     os.system(f'node TLS.js {args.url} {args.time} 5000 {args.threads} proxies.txt')
 
-    main(args.methods} args.url, args.time, args.threads)
+    main(args.methods, args.url, args.time, args.threads)
