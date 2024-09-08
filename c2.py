@@ -490,7 +490,7 @@ def main():
             try:
                 url = cnc.split()[1]
                 time = cnc.split()[2]
-                thread = cnc.split()[3]
+                threads = cnc.split()[3]
                 os.system(f'python3 url.py {url} {time} {threads}')
             except IndexError:
                 print('Usage: spoof <url> <time> <threads>')
