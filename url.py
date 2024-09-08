@@ -73,5 +73,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Call the Go script with the correct URL and duration
-    os.system(f'go run Hulk.go -site {args.url} -data GET -duration {args.time}')
+    os.system(f'go run Hulk.go -site {args.url} -data {args.methods} -duration {args.time}')
     main(args.url, args.duration)
