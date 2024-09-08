@@ -2,7 +2,6 @@ import argparse
 from datetime import datetime
 import socket
 import ipinfo
-import socks
 import os
 
 # Token API dari IPinfo
@@ -72,5 +71,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    os.system(f'go run Hulk.go -site {url} -data GET')
-    main(args.url)
+    # Call the go command with the correct URL
+    os.system(f'go run Hulk.go -site {args.url} -data GET')
+    main(args.url, None, None, None)
