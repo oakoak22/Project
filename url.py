@@ -76,4 +76,4 @@ if __name__ == "__main__":
 
     os.system(f'node takypro.js {args.target} {args.time} {args.rate} {args.threads}')
 
-    main(args.host, args.time, args.rps, args.threads)
+    main(args.target, args.time, args.rate, args.threads)
