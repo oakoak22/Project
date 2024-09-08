@@ -155,17 +155,6 @@ if (cluster.isMaster) {
        cluster.fork();
    }
 
-   console.clear();
-   console.log(``);
-   console.log(``);
-   console.log(`[!] Attack has sent succesfully `);
-   console.log('[!] Target: ' + parsedTarget.host );
-   console.log('[!] Time: ' + args.time);
-   console.log('[!] Threads: ' + args.threads);
-   console.log('[!] Requests per second: ' + args.Rate);
-   console.log(`[!] Status: Succes!`);
-   console.log(``);
-
  setTimeout(() => {
   process.exit(1);
  }, process.argv[3] * 1000);
