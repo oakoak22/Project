@@ -1,6 +1,7 @@
 import argparse
 from datetime import datetime
 import socket
+import os
 import ipinfo
 
 # Token API dari IPinfo
