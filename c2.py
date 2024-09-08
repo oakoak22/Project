@@ -486,15 +486,15 @@ def main():
                 print('Usage: tls <target> <time>')
                 print('Example: tls https://google.com 60')
     
-        elif "https-spoof" in cnc:
+        elif "spoof" in cnc:
             try:
                 url = cnc.split()[1]
                 time = cnc.split()[2]
                 thread = cnc.split()[3]
-                os.system(f'python3 https-spoof.py {url} {time} {thread}')
+                os.system(f'python3 url.py {url} {time} {threads}')
             except IndexError:
-                print('Usage: https-spoof <url> <time> <threads>')
-                print('Example: https-spoof http://vailon.com 60 500')
+                print('Usage: spoof <url> <time> <threads>')
+                print('Example: spoof http://vailon.com 60 15000')
     
         elif "slow" in cnc:
             try:
