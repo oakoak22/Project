@@ -68,7 +68,7 @@ def main(url, duration):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
     parser.add_argument('url', type=str, help='URL to attack')
-    parser.add_argument('methods', type=ste, help='metod')
+    parser.add_argument('methods', type=str, help='metod')
     parser.add_argument('duration', type=int, default=0, help='Duration to run the attack in seconds')
 
     args = parser.parse_args()
