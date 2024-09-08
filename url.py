@@ -58,7 +58,7 @@ def main(url, threads, time, methods):
     print(f"        \x1b[38;2;233;233;233mISP     : [ \x1b[38;2;0;255;255m{isp_info} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTHREADS : [ \x1b[38;2;0;255;255m{args.threads} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{args.time} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mRAZ \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255m{args.methods} \x1b[38;2;233;233;233m]")
     print(f"   Attack Details :")
     print(f"        \x1b[38;2;233;233;233mSTATUS : [ \x1b[38;2;0;212;14mAttack With 1 Conc \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mHOUR   : [ \x1b[38;2;0;255;255m{current_time} \x1b[38;2;233;233;233m]")
@@ -69,9 +69,10 @@ if __name__ == "__main__":
     parser.add_argument('target', type=str, help='URL to attack')
     parser.add_argument('threads', type=int, help='Time duration of attack')
     parser.add_argument('time', type=int, help='anjiwie')
+    parser.add_argument('methods', type=int, help='ishwjw')
 
     args = parser.parse_args()
 
     os.system(f'node MIX.js {args.target} {args.threads} {args.time}')
     
-    main(args.target, args.threads, args.time)
+    main(args.target, args.threads, args.time, args.methods)
