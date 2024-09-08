@@ -81,6 +81,6 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    os.system(f'python3 noss.py')
+    os.system(f'python3 noss.py {url} {port} {time} {methods}')
 
     main(args.url, args.port, args.time, args.methods)
