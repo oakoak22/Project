@@ -72,6 +72,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    os.system(f'node TLS.js {args.target} {args.threads} {args.time}')
+    os.system(f'node MIX.js {args.target} {args.threads} {args.time}')
     
     main(args.target, args.threads, args.time)
