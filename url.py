@@ -75,6 +75,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    os.system(f'node BOOMBER.js {args.target} {args.time} {args.rate} {args.threads})
+    os.system(f'node BOOMBER.js {args.target} {args.time} {args.rate} {args.threads}')
     
     main(args.target, args.time, args.rate, arts.threads)
