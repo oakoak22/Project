@@ -74,6 +74,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    os.system(f'node takypro.js {args.target} {args.time} {args.rate} {args.threads}')
+    os.system(f'node TLS.js {args.target} {args.time} {args.rate} {args.threads} proxies.txt')
 
     main(args.target, args.time, args.rate, args.threads)
