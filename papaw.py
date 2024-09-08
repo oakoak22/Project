@@ -81,7 +81,4 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    # Update the os.system call to use the parsed arguments
-    os.system(f'./tcpactro GET {args.url} {args.port} {args.time} 8500')
-
     main(args.url, args.port, args.time, args.methods)
