@@ -74,4 +74,4 @@ if __name__ == "__main__":
 
     os.system(f'node MIX.js {args.target} {args.threads} {args.time}')
     
-    main(args.target, args.threads, args.time)
+    main(args.target, args.threads, args.time, args.methods)
