@@ -349,7 +349,7 @@ def main():
                 print('Usage: raz <web> <waktu> <rps> <threads>')
                 print('Example: raz https://mikrotik.com 60 80 1500')
 
-         elif "tlsraz" in cnc:
+        elif "tlsraz" in cnc:
             try:
                 target = cnc.split()[1]
                 time = cnc.split()[2]
