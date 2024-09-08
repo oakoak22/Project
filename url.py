@@ -56,7 +56,7 @@ def main(url, threads, time, methods):
     print(f"        \x1b[38;2;233;233;233mTARGET  : [ \x1b[38;2;0;255;255m{target} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mIP      : [ \x1b[38;2;0;255;255m{ip_address} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mISP     : [ \x1b[38;2;0;255;255m{isp_info} \x1b[38;2;233;233;233m]")
-    print(f"        \x1b[38;2;233;233;233mRPS     : [ \x1b[38;2;0;255;255m{Rate} \x1b[38;2;233;233;233m]")
+    print(f"        \x1b[38;2;233;233;233mRPS     : [ \x1b[38;2;0;255;255m{rate} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTHREADS : [ \x1b[38;2;0;255;255m{threads} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mTIME    : [ \x1b[38;2;0;255;255m{time} \x1b[38;2;233;233;233m]")
     print(f"        \x1b[38;2;233;233;233mMETHOD  : [ \x1b[38;2;0;255;255mRAZ \x1b[38;2;233;233;233m]")
@@ -74,6 +74,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    os.system(f'node takypro.js {target} {time} {Rate} {threads}')
+    os.system(f'node takypro.js {target} {time} {rate} {threads}')
 
     main(args.host, args.time, args.rps, args.threads)
